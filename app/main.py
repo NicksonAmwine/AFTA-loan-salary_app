@@ -1,18 +1,22 @@
 from fastapi import FastAPI, Query
 from salary import calculate_net_salary
-from  loan import calculate_compound_interest, calculate_loan_payment
+from loan import calculate_compound_interest, calculate_loan_payment, eligibility
 from enum import Enum
+
+app = FastAPI()
 
 class PayFrequency(str, Enum):
     weekly = "weekly"
     semimonthly = "semi-monthly"
     monthly = "monthly" 
 
-app = FastAPI()
-
 @app.get("/")
 def root():
     return {"message": "Welcome to the Advanced Salary & Loan Calculator API"}
+
+@app.get("/advance/")
+def check_advance_eligibility(gross_salary: int, pay_frequency: PayFrequency, requested_amount: int):
+    return eligibility(gross_salary, pay_frequency, requested_amount)
 
 @app.get("/salary/")
 def net_salary(gross_salary: int, tax_rate: float = 0.3):

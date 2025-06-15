@@ -70,6 +70,7 @@ elif calculator_type == "Salary Advance Calculator":
                     st.subheader("Advance Details")
                     st.info(f"Requested Amount: ${requested_amount}")
                     st.info(f"Total to Repay: ${result['total_repayment']}")
+                    st.info(f"Fee Charged: ${result['fee']}")
                 else:
                     st.error("Not eligible for advance")
                     st.info(f"Reason: {result['reason']}")

@@ -25,21 +25,28 @@ def eligibility(gross_salary, pay_frequency, requested_amount):
     max_advance = monthly_salary * 0.5
 
     is_eligible = requested_amount <= max_advance and monthly_salary >= 500000
+    fee = round(requested_amount * 0.05, 2) if is_eligible else 0
+    total_repayment = round(requested_amount + fee, 2) if is_eligible else 0
+
     if is_eligible:
         return {
             "is_eligible": is_eligible,
             "max_advance": round(max_advance, 2),
             "monthly_salary": round(monthly_salary, 2),
             "requested_amount": requested_amount,
-            "reason": "Eligible for advance"
+            "reason": "Eligible for advance",
+            "fee": fee,
+            "total_repayment": total_repayment
         }
-    
+
     return {
         "is_eligible": is_eligible,
         "max_advance": round(max_advance, 2),
         "monthly_salary": round(monthly_salary, 2),
         "requested_amount": requested_amount,
-        "reason": "Amount exceeds maximum allowed" 
+        "reason": "Amount exceeds maximum allowed",
+        "fee": 0,
+        "total_repayment": 0
     }
 
 def convert_to_monthly(amount, frequency):
