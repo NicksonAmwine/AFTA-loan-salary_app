@@ -4,3 +4,4 @@ streamlit
 uvicorn==0.34.3
 pandas
 numpy
+enum34
