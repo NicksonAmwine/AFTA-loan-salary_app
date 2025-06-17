@@ -4,7 +4,7 @@ services:
     env: docker
     dockerfilePath: ./app/Dockerfile
     startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
-    ports:
+    port:
       - 8000
 
   - type: web
@@ -12,5 +12,5 @@ services:
     env: docker
     dockerfilePath: ./streamlit_app/Dockerfile
     startCommand: streamlit run app.py --server.port=8501 --server.address=0.0.0.0
-    ports:
+    port:
       - 8501
