@@ -17,7 +17,7 @@ if calculator_type == "Loan Calculator":
     monthly_rate = st.number_input("Monthly Interest Rate (%)", min_value=0.0, value=1.0, step=0.1)
     months = st.number_input("Loan Term (Months)", min_value=1, value=12, step=1)
     
-    if st.button("Calculate Loan Payment"):
+    if st.button("Calculate Loan Payment" ):
         try:
             response = requests.get(
                 f"{API_URL}/loan/",
