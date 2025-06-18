@@ -1,0 +1,7 @@
+fastapi==0.115.12
+requests==2.32.4
+streamlit
+uvicorn==0.34.3
+pandas
+numpy
+enum34
